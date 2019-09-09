@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
 import os
+from dotenv import load_dotenv
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,7 +21,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'kfsf7(_j=&!2o8!1+2xjpkf5@@ad)8i_7=c49k1k@zh7zn79#$'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cdportfolio'
 ]
 
 MIDDLEWARE = [
@@ -77,10 +79,10 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME':  'mydatabase',
-	'USER': 'root',
-	'PASSWORD': 'root',
-	'HOST': '127.0.0.1',
-	'PORT': '3306'
+	'USER': os.getenv("USER")
+	'PASSWORD': os.getenv("PASSWORD")
+	'HOST': os.getenv("HOST")
+	'PORT': os.getenv("PORT")
     }
 }
 
